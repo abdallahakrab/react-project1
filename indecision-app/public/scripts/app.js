@@ -31,5 +31,27 @@ var template = React.createElement(
         )
     )
 );
+
+//challenge :exploring JSX :
+var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'Name: Abdallah Akrab'
+    ),
+    React.createElement(
+        'p',
+        null,
+        'Age: 21'
+    ),
+    React.createElement(
+        'p',
+        null,
+        'Location: '
+    )
+);
+
 var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

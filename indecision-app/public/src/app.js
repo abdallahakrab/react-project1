@@ -9,7 +9,16 @@ var template = (
         <li>Second Item</li>
     </ul>
 </div>);
+
+//challenge :exploring JSX :
+var templateTwo = (
+    <div>
+        <h1>Name: Abdallah Akrab</h1>
+        <p>Age: 21</p>
+        <p>Location: </p>
+        </div>);
+
 var appRoot = document.getElementById('app');
-ReactDOM.render(template,appRoot);
+ReactDOM.render(templateTwo,appRoot);
 
  
