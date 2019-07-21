@@ -32,24 +32,33 @@ var template = React.createElement(
     )
 );
 
-//challenge :exploring JSX :
+var user = {
+    name: 'Abdallah',
+    age: '21',
+    location: 'X'
+
+};
 var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'Name: Abdallah Akrab'
+        'Name: ',
+        user.name
     ),
     React.createElement(
         'p',
         null,
-        'Age: 21'
+        'Age: ',
+        user.age
     ),
     React.createElement(
         'p',
         null,
-        'Location: '
+        'Location: ',
+        user.location,
+        ' '
     )
 );
 

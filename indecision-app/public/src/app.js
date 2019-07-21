@@ -10,12 +10,17 @@ var template = (
     </ul>
 </div>);
 
-//challenge :exploring JSX :
+var user = {
+    name: 'Abdallah',
+    age: '21',
+    location: 'X'
+
+};
 var templateTwo = (
     <div>
-        <h1>Name: Abdallah Akrab</h1>
-        <p>Age: 21</p>
-        <p>Location: </p>
+        <h1>Name: {user.name}</h1>
+        <p>Age: {user.age}</p>
+        <p>Location: {user.location} </p>
         </div>);
 
 var appRoot = document.getElementById('app');
