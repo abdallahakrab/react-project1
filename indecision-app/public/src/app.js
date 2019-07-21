@@ -1,5 +1,5 @@
 console.log('App.js is running!'); 
- //JSX expression challenge:
+
 
  var app = {
      title: "Indecision",
@@ -18,17 +18,23 @@ var template = (
 var user = {
     name: 'Abdallah',
     age: '21',
-    location: 'X'
+    
 
 };
+function getLocation(location){
+    if(location)
+    return location 
+    else 
+    return "Unkown" 
+}
 var templateTwo = (
     <div>
         <h1>Name: {user.name}</h1>
         <p>Age: {user.age}</p>
-        <p>Location: {user.location} </p>
+        <p>Location: {getLocation(user.location)} </p>
         </div>);
 
 var appRoot = document.getElementById('app');
-ReactDOM.render(template,appRoot);
+ReactDOM.render(templateTwo,appRoot);
 
  

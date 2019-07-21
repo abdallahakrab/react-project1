@@ -1,7 +1,6 @@
 "use strict";
 
 console.log('App.js is running!');
-//JSX expression challenge:
 
 var app = {
     title: "Indecision",
@@ -39,10 +38,12 @@ var template = React.createElement(
 
 var user = {
     name: 'Abdallah',
-    age: '21',
-    location: 'X'
+    age: '21'
 
 };
+function getLocation(location) {
+    if (location) return location;else return "Unkown";
+}
 var templateTwo = React.createElement(
     "div",
     null,
@@ -62,10 +63,10 @@ var templateTwo = React.createElement(
         "p",
         null,
         "Location: ",
-        user.location,
+        getLocation(user.location),
         " "
     )
 );
 
 var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
