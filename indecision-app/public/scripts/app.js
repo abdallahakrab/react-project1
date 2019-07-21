@@ -1,33 +1,38 @@
-'use strict';
+"use strict";
 
 console.log('App.js is running!');
+//JSX expression challenge:
 
+var app = {
+    title: "Indecision",
+    subtitle: "This is some info"
+};
 var template = React.createElement(
-    'div',
+    "div",
     null,
-    '                                                        ',
     React.createElement(
-        'h1',
+        "h1",
         null,
-        'Indecision App!'
+        app.title,
+        " App!"
     ),
     React.createElement(
-        'p',
+        "p",
         null,
-        'Welcome'
+        app.subtitle
     ),
     React.createElement(
-        'ul',
+        "ul",
         null,
         React.createElement(
-            'li',
+            "li",
             null,
-            'First Item'
+            "First Item"
         ),
         React.createElement(
-            'li',
+            "li",
             null,
-            'Second Item'
+            "Second Item"
         )
     )
 );
@@ -39,28 +44,28 @@ var user = {
 
 };
 var templateTwo = React.createElement(
-    'div',
+    "div",
     null,
     React.createElement(
-        'h1',
+        "h1",
         null,
-        'Name: ',
+        "Name: ",
         user.name
     ),
     React.createElement(
-        'p',
+        "p",
         null,
-        'Age: ',
+        "Age: ",
         user.age
     ),
     React.createElement(
-        'p',
+        "p",
         null,
-        'Location: ',
+        "Location: ",
         user.location,
-        ' '
+        " "
     )
 );
 
 var appRoot = document.getElementById('app');
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
