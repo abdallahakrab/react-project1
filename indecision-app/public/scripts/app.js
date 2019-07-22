@@ -4,7 +4,8 @@ console.log('App.js is running!');
 
 var app = {
     title: "Indecision",
-    subtitle: "This is some info"
+    subtitle: "This is some info",
+    options: []
 };
 var template = React.createElement(
     "div",
@@ -15,10 +16,19 @@ var template = React.createElement(
         app.title,
         " App!"
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         "p",
         null,
         app.subtitle
+    ),
+    app.options.length > 0 ? React.createElement(
+        "p",
+        null,
+        " Here are your options "
+    ) : React.createElement(
+        "p",
+        null,
+        "no options"
     ),
     React.createElement(
         "ul",
@@ -70,4 +80,4 @@ var templateTwo = React.createElement(
 );
 
 var appRoot = document.getElementById('app');
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
