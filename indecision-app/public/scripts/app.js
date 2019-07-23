@@ -24,6 +24,11 @@ var clickRemoveAll = function clickRemoveAll() {
     renderSubmitForm();
 };
 
+var onMakeDecision = function onMakeDecision() {
+    var randomNumber = Math.floor(Math.random() * app.options.length);
+    alert(app.options[randomNumber]);
+};
+
 var appRoot = document.getElementById('app');
 var renderSubmitForm = function renderSubmitForm() {
     var template = React.createElement(
@@ -50,7 +55,7 @@ var renderSubmitForm = function renderSubmitForm() {
             "no options"
         ),
         React.createElement(
-            "ul",
+            "ol",
             null,
             app.options.map(function (option) {
                 return React.createElement(
@@ -59,6 +64,11 @@ var renderSubmitForm = function renderSubmitForm() {
                     option
                 );
             })
+        ),
+        React.createElement(
+            "button",
+            { disabled: app.options.length == 0, onClick: onMakeDecision },
+            "What should I learn today"
         ),
         React.createElement(
             "button",

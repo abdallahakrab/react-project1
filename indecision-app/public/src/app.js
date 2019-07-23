@@ -21,6 +21,11 @@ console.log('App.js is running!');
      app.options = [];
      renderSubmitForm();
  }
+
+ const onMakeDecision = () => {
+     const randomNumber = Math.floor(Math.random() * app.options.length);
+     alert(app.options[randomNumber]);
+ }
  
 
 
@@ -31,11 +36,12 @@ const renderSubmitForm = () =>{
             <h1>{app.title} App!</h1>
             {app.subtitle && <p>{app.subtitle}</p>}
             {app.options.length > 0 ? <p> Here are your options </p> : <p>no options</p>}
-            <ul>
+            <ol>
                 {app.options.map((option)=>{
                     return <li key={option}>{option}</li>;
                 })}
-            </ul>
+            </ol>
+            <button disabled={app.options.length ==0} onClick={onMakeDecision}>What should I learn today</button>
             <button onClick={clickRemoveAll}>Remove all</button>
             <p>{app.options.length}</p>
             <form onSubmit={onFormSubmit}>
