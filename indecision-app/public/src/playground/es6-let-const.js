@@ -1,13 +1,20 @@
-// arrow functions challenge parrt 1 : 
+// arrow functions challenge parrt 2 : 
 
-    const getFirstName = (fullname) => {
-        return fullname.split(' ')[0];
-    };
+const newObject = {
+    numbers: [2,4,6],
+    multiplier: 2,
+    multiply() {
+        return this.numbers.map((result) =>  result * this.multiplier )
+    
+}
+}
 
-    const getFirstName2 = (fullname) => fullname.split(' ')[0];
 
-    console.log(getFirstName("Mike Tyson"));
-    console.log(getFirstName2("Gary V"));
+console.log(newObject.multiply());
+
+
+
+
 
 
     

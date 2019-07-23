@@ -1,14 +1,17 @@
-'use strict';
+"use strict";
 
-// arrow functions challenge parrt 1 : 
+// arrow functions challenge parrt 2 : 
 
-var getFirstName = function getFirstName(fullname) {
-    return fullname.split(' ')[0];
+var newObject = {
+    numbers: [2, 4, 6],
+    multiplier: 2,
+    multiply: function multiply() {
+        var _this = this;
+
+        return this.numbers.map(function (result) {
+            return result * _this.multiplier;
+        });
+    }
 };
 
-var getFirstName2 = function getFirstName2(fullname) {
-    return fullname.split(' ')[0];
-};
-
-console.log(getFirstName("Mike Tyson"));
-console.log(getFirstName2("Gary V"));
+console.log(newObject.multiply());
