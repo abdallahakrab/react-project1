@@ -24,16 +24,6 @@ var clickRemoveAll = function clickRemoveAll() {
     renderSubmitForm();
 };
 
-// const user = {
-//     name: 'Abdallah',
-//     age: '21',
-//     Location: 'X'
-// };
-// function getLocation(location){
-//     if(location)
-//     return <p>Location: {location} </p> ;
-
-// };
 var appRoot = document.getElementById('app');
 var renderSubmitForm = function renderSubmitForm() {
     var template = React.createElement(
@@ -62,16 +52,13 @@ var renderSubmitForm = function renderSubmitForm() {
         React.createElement(
             "ul",
             null,
-            React.createElement(
-                "li",
-                null,
-                "First Item"
-            ),
-            React.createElement(
-                "li",
-                null,
-                "Second Item"
-            )
+            app.options.map(function (option) {
+                return React.createElement(
+                    "li",
+                    { key: option },
+                    option
+                );
+            })
         ),
         React.createElement(
             "button",

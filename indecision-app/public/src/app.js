@@ -23,16 +23,7 @@ console.log('App.js is running!');
  }
  
 
-// const user = {
-//     name: 'Abdallah',
-//     age: '21',
-//     Location: 'X'
-// };
-// function getLocation(location){
-//     if(location)
-//     return <p>Location: {location} </p> ;
-    
-// };
+
 const appRoot = document.getElementById('app');
 const renderSubmitForm = () =>{
     const template = ( 
@@ -41,8 +32,9 @@ const renderSubmitForm = () =>{
             {app.subtitle && <p>{app.subtitle}</p>}
             {app.options.length > 0 ? <p> Here are your options </p> : <p>no options</p>}
             <ul>
-                <li>First Item</li>
-                <li>Second Item</li>
+                {app.options.map((option)=>{
+                    return <li key={option}>{option}</li>;
+                })}
             </ul>
             <button onClick={clickRemoveAll}>Remove all</button>
             <p>{app.options.length}</p>
