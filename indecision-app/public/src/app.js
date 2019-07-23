@@ -30,6 +30,7 @@ function getLocation(location){
     
 }
 /////////////////////
+//manual data binding challenge: 
 let count = 0;
 const addOne= () => {count++;
 renderCounterApp();};

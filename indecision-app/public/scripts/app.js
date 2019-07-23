@@ -62,6 +62,7 @@ function getLocation(location) {
     );
 }
 /////////////////////
+//manual data binding challenge: 
 var count = 0;
 var addOne = function addOne() {
     count++;
