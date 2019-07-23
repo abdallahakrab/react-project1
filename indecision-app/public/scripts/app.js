@@ -5,7 +5,7 @@ console.log('App.js is running!');
 var app = {
     title: "Indecision",
     subtitle: "This is some info",
-    options: []
+    options: ['One', 'Two']
 };
 var template = React.createElement(
     "div",
@@ -60,52 +60,6 @@ function getLocation(location) {
         location,
         " "
     );
-}
-/////////////////////
-//manual data binding challenge: 
-var count = 0;
-var addOne = function addOne() {
-    count++;
-    renderCounterApp();
 };
-var subOne = function subOne() {
-    count--;
-    renderCounterApp();
-};
-var reset = function reset() {
-    count = 0;
-    renderCounterApp();
-};
-
 var appRoot = document.getElementById('app');
-
-var renderCounterApp = function renderCounterApp() {
-    var templateTwo = React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "h1",
-            null,
-            "Count: ",
-            count
-        ),
-        React.createElement(
-            "button",
-            { onClick: addOne },
-            "+1"
-        ),
-        React.createElement(
-            "button",
-            { onClick: subOne },
-            "-1"
-        ),
-        React.createElement(
-            "button",
-            { onClick: reset },
-            "Reset"
-        )
-    );
-    ReactDOM.render(templateTwo, appRoot);
-};
-
-renderCounterApp();
+ReactDOM.render(template, appRoot);
