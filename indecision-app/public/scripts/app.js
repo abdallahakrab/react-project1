@@ -1,17 +1,100 @@
 "use strict";
 
-// arrow functions challenge parrt 2 : 
+console.log('App.js is running!');
 
-var newObject = {
-    numbers: [2, 4, 6],
-    multiplier: 2,
-    multiply: function multiply() {
-        var _this = this;
-
-        return this.numbers.map(function (result) {
-            return result * _this.multiplier;
-        });
-    }
+var app = {
+    title: "Indecision",
+    subtitle: "This is some info",
+    options: []
 };
+var template = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        app.title,
+        " App!"
+    ),
+    app.subtitle && React.createElement(
+        "p",
+        null,
+        app.subtitle
+    ),
+    app.options.length > 0 ? React.createElement(
+        "p",
+        null,
+        " Here are your options "
+    ) : React.createElement(
+        "p",
+        null,
+        "no options"
+    ),
+    React.createElement(
+        "ul",
+        null,
+        React.createElement(
+            "li",
+            null,
+            "First Item"
+        ),
+        React.createElement(
+            "li",
+            null,
+            "Second Item"
+        )
+    )
+);
 
-console.log(newObject.multiply());
+var user = {
+    name: 'Abdallah',
+    age: '21',
+    Location: 'X'
+
+};
+function getLocation(location) {
+    if (location) return React.createElement(
+        "p",
+        null,
+        "Location: ",
+        location,
+        " "
+    );
+}
+var count = 0;
+var subOne = function subOne() {
+    console.log('-1');
+};
+var reset = function reset() {
+    console.log('reset');
+};
+var templateTwo = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        "Count: ",
+        count
+    ),
+    React.createElement(
+        "button",
+        { onClick: function onClick() {
+                console.log('+1');
+            } },
+        "+1"
+    ),
+    React.createElement(
+        "button",
+        { onClick: subOne },
+        "-1"
+    ),
+    React.createElement(
+        "button",
+        { onClick: reset },
+        "Reset"
+    )
+);
+
+var appRoot = document.getElementById('app');
+ReactDOM.render(templateTwo, appRoot);
