@@ -1,83 +1,14 @@
-"use strict";
+'use strict';
 
-console.log('App.js is running!');
+// arrow functions challenge parrt 1 : 
 
-var app = {
-    title: "Indecision",
-    subtitle: "This is some info",
-    options: []
+var getFirstName = function getFirstName(fullname) {
+    return fullname.split(' ')[0];
 };
-var template = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        app.title,
-        " App!"
-    ),
-    app.subtitle && React.createElement(
-        "p",
-        null,
-        app.subtitle
-    ),
-    app.options.length > 0 ? React.createElement(
-        "p",
-        null,
-        " Here are your options "
-    ) : React.createElement(
-        "p",
-        null,
-        "no options"
-    ),
-    React.createElement(
-        "ul",
-        null,
-        React.createElement(
-            "li",
-            null,
-            "First Item"
-        ),
-        React.createElement(
-            "li",
-            null,
-            "Second Item"
-        )
-    )
-);
 
-var user = {
-    name: 'Abdallah',
-    age: '21',
-    Location: 'X'
-
+var getFirstName2 = function getFirstName2(fullname) {
+    return fullname.split(' ')[0];
 };
-function getLocation(location) {
-    if (location) return React.createElement(
-        "p",
-        null,
-        "Location: ",
-        location,
-        " "
-    );
-}
-var templateTwo = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        "Name: ",
-        user.name
-    ),
-    React.createElement(
-        "p",
-        null,
-        "Age: ",
-        user.age
-    ),
-    getLocation(user.Location)
-);
 
-var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+console.log(getFirstName("Mike Tyson"));
+console.log(getFirstName2("Gary V"));
