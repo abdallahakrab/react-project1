@@ -12,5 +12,22 @@ class Person {
 
 };  
 
-const me = new Person("Andrew");
+class Traveller extends Person {
+    constructor(name, age, homelocation){
+        super(name,age);
+        this.homelocation = homelocation;
+    }
+    getDescription(){
+
+        let Description = super.getDescription();
+
+        if(!!this.homelocation){
+            Description =  `${this.name}, ${this.age} years old lives in ${this.homelocation}.`
+        }
+        
+        return Description;
+
+    }
+}
+const me = new Traveller("Andrew",23);
 console.log(me.getDescription());
