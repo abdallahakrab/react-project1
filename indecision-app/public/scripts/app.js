@@ -1,51 +1,35 @@
 "use strict";
 
-console.log("Hello");
-var onShowDetails = function onShowDetails() {
-    show = !show;
-    renderToggle();
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var show = false;
-var template = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "p",
-        null,
-        "Visiblity Toggle"
-    ),
-    React.createElement(
-        "button",
-        { onClick: onShowDetails },
-        "Show Details"
-    )
-);
-var appRoot = document.getElementById("app");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var renderToggle = function renderToggle() {
-    console.log(show);
-    var template = React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "p",
-            null,
-            "Visiblity Toggle"
-        ),
-        React.createElement(
-            "button",
-            { onClick: onShowDetails },
-            show ? "Hide details" : "Show Details"
-        ),
-        show && React.createElement(
-            "p",
-            null,
-            "Show all details"
-        )
-    );
+var Person = function () {
+    function Person(name) {
+        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
-    ReactDOM.render(template, appRoot);
-};
+        _classCallCheck(this, Person);
 
-renderToggle();
+        this.name = name;
+        this.age = age;
+    }
+
+    _createClass(Person, [{
+        key: "methodTrial",
+        value: function methodTrial() {
+            return "hello";
+        }
+    }, {
+        key: "getDescription",
+        value: function getDescription() {
+            return "My name is " + this.name + " and my age is " + this.age;
+        }
+    }]);
+
+    return Person;
+}();
+
+;
+
+var me = new Person("Andrew");
+console.log(me.getDescription());
