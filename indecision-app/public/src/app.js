@@ -55,16 +55,39 @@ class Option extends React.Component {
 }
 
 class Add extends React.Component {
+    handleAdd(){
+        alert("Option added");
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        if(e.target.elements.text.value)
+        alert(e.target.elements.text.value);
+
+        e.target.elements.text.value = '';
+    }
     render() {
         return (
             <div>
-                <button>Add Option</button>
+            <form onSubmit={this.handleSubmit}>
+                <input name="text" type="text"></input>
+                <button onClick={this.handleAdd}>Add Option</button>
+            </form>
             </div>
             
-        )
+        );
     }
 }
 
+class RemoveAll extends React.Component {
+    
+    handleRemove(){
+        alert("Options Removed");
+    }
+    render(){
+        return <button onClick={this.handleRemove}>Remove All</button> ;
+    }
+}
 
 
 
@@ -78,6 +101,7 @@ class IndecisionApp extends React.Component {
         <div>
             <Header title="Indecision App" subtitle="let the computer decide what you learn today" />
             <Add />
+            <RemoveAll />
             <Options options={options} length={options.length} />
             <Action />
         </div>

@@ -144,15 +144,33 @@ var Add = function (_React$Component5) {
     }
 
     _createClass(Add, [{
+        key: "handleAdd",
+        value: function handleAdd() {
+            alert("Option added");
+        }
+    }, {
+        key: "handleSubmit",
+        value: function handleSubmit(e) {
+            e.preventDefault();
+            if (e.target.elements.text.value) alert(e.target.elements.text.value);
+
+            e.target.elements.text.value = '';
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
                 "div",
                 null,
                 React.createElement(
-                    "button",
-                    null,
-                    "Add Option"
+                    "form",
+                    { onSubmit: this.handleSubmit },
+                    React.createElement("input", { name: "text", type: "text" }),
+                    React.createElement(
+                        "button",
+                        { onClick: this.handleAdd },
+                        "Add Option"
+                    )
                 )
             );
         }
@@ -161,8 +179,36 @@ var Add = function (_React$Component5) {
     return Add;
 }(React.Component);
 
-var IndecisionApp = function (_React$Component6) {
-    _inherits(IndecisionApp, _React$Component6);
+var RemoveAll = function (_React$Component6) {
+    _inherits(RemoveAll, _React$Component6);
+
+    function RemoveAll() {
+        _classCallCheck(this, RemoveAll);
+
+        return _possibleConstructorReturn(this, (RemoveAll.__proto__ || Object.getPrototypeOf(RemoveAll)).apply(this, arguments));
+    }
+
+    _createClass(RemoveAll, [{
+        key: "handleRemove",
+        value: function handleRemove() {
+            alert("Options Removed");
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "button",
+                { onClick: this.handleRemove },
+                "Remove All"
+            );
+        }
+    }]);
+
+    return RemoveAll;
+}(React.Component);
+
+var IndecisionApp = function (_React$Component7) {
+    _inherits(IndecisionApp, _React$Component7);
 
     function IndecisionApp() {
         _classCallCheck(this, IndecisionApp);
@@ -178,6 +224,7 @@ var IndecisionApp = function (_React$Component6) {
                 null,
                 React.createElement(Header, { title: "Indecision App", subtitle: "let the computer decide what you learn today" }),
                 React.createElement(Add, null),
+                React.createElement(RemoveAll, null),
                 React.createElement(Options, { options: options, length: options.length }),
                 React.createElement(Action, null)
             );
