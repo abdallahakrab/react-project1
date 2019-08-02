@@ -1,11 +1,20 @@
+//Variables
+
+const options = ["thing one", "thing throw", "thing three"];
+
+const dummy = ["d1","d2","d3"];
+
+
+//End Variables 
+
 
 class Header extends React.Component {
    
     render(){ 
         return (
             <div>
-            <h1>Indecision</h1>
-            <p>Let the computer help you decide</p>
+            <h1>{this.props.title}</h1>  
+            <p>{this.props.subtitle}</p>
             </div>
         )
 
@@ -27,6 +36,19 @@ class Options extends React.Component {
         return (
             <div>
                 <p>Options will be here</p>
+                <p>{this.props.length}</p>
+                { this.props.options.map((option)=> <Option key={option} optionText = {option} />  ) }
+            </div>
+        )
+    }
+}
+
+class Option extends React.Component {
+    render(){
+        return(
+            <div>
+             {this.props.optionText}
+            
             </div>
         )
     }
@@ -38,19 +60,32 @@ class Add extends React.Component {
             <div>
                 <button>Add Option</button>
             </div>
+            
         )
     }
 }
 
-const jsx = (
-    <div>
-        <Header />
-        <Action />
-        <Options />
-        <Add />
-    </div>
 
-)
 
-ReactDOM.render(jsx, document.getElementById('app'));
+
+
+
+
+class IndecisionApp extends React.Component {
+
+    render(){
+        return (
+        <div>
+            <Header title="Indecision App" subtitle="let the computer decide what you learn today" />
+            <Add />
+            <Options options={options} length={options.length} />
+            <Action />
+        </div>
+        )
+    }
+}
+
+
+
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
 

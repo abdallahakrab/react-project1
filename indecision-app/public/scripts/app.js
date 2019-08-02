@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -7,6 +7,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//Variables
+
+var options = ["thing one", "thing throw", "thing three"];
+
+var dummy = ["d1", "d2", "d3"];
+
+//End Variables 
+
 
 var Header = function (_React$Component) {
     _inherits(Header, _React$Component);
@@ -18,20 +27,20 @@ var Header = function (_React$Component) {
     }
 
     _createClass(Header, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
                 React.createElement(
-                    'h1',
+                    "h1",
                     null,
-                    'Indecision'
+                    this.props.title
                 ),
                 React.createElement(
-                    'p',
+                    "p",
                     null,
-                    'Let the computer help you decide'
+                    this.props.subtitle
                 )
             );
         }
@@ -50,15 +59,15 @@ var Action = function (_React$Component2) {
     }
 
     _createClass(Action, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
                 React.createElement(
-                    'button',
+                    "button",
                     null,
-                    'What should I learn today?'
+                    "What should I learn today?"
                 )
             );
         }
@@ -77,16 +86,24 @@ var Options = function (_React$Component3) {
     }
 
     _createClass(Options, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
                 React.createElement(
-                    'p',
+                    "p",
                     null,
-                    'Options will be here'
-                )
+                    "Options will be here"
+                ),
+                React.createElement(
+                    "p",
+                    null,
+                    this.props.length
+                ),
+                this.props.options.map(function (option) {
+                    return React.createElement(Option, { key: option, optionText: option });
+                })
             );
         }
     }]);
@@ -94,8 +111,31 @@ var Options = function (_React$Component3) {
     return Options;
 }(React.Component);
 
-var Add = function (_React$Component4) {
-    _inherits(Add, _React$Component4);
+var Option = function (_React$Component4) {
+    _inherits(Option, _React$Component4);
+
+    function Option() {
+        _classCallCheck(this, Option);
+
+        return _possibleConstructorReturn(this, (Option.__proto__ || Object.getPrototypeOf(Option)).apply(this, arguments));
+    }
+
+    _createClass(Option, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                null,
+                this.props.optionText
+            );
+        }
+    }]);
+
+    return Option;
+}(React.Component);
+
+var Add = function (_React$Component5) {
+    _inherits(Add, _React$Component5);
 
     function Add() {
         _classCallCheck(this, Add);
@@ -104,15 +144,15 @@ var Add = function (_React$Component4) {
     }
 
     _createClass(Add, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
                 React.createElement(
-                    'button',
+                    "button",
                     null,
-                    'Add Option'
+                    "Add Option"
                 )
             );
         }
@@ -121,13 +161,30 @@ var Add = function (_React$Component4) {
     return Add;
 }(React.Component);
 
-var jsx = React.createElement(
-    'div',
-    null,
-    React.createElement(Header, null),
-    React.createElement(Action, null),
-    React.createElement(Options, null),
-    React.createElement(Add, null)
-);
+var IndecisionApp = function (_React$Component6) {
+    _inherits(IndecisionApp, _React$Component6);
 
-ReactDOM.render(jsx, document.getElementById('app'));
+    function IndecisionApp() {
+        _classCallCheck(this, IndecisionApp);
+
+        return _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).apply(this, arguments));
+    }
+
+    _createClass(IndecisionApp, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                null,
+                React.createElement(Header, { title: "Indecision App", subtitle: "let the computer decide what you learn today" }),
+                React.createElement(Add, null),
+                React.createElement(Options, { options: options, length: options.length }),
+                React.createElement(Action, null)
+            );
+        }
+    }]);
+
+    return IndecisionApp;
+}(React.Component);
+
+ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));
