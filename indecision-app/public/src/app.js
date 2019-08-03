@@ -55,14 +55,11 @@ class Option extends React.Component {
 }
 
 class Add extends React.Component {
-    handleAdd(){
-        alert("Option added");
-    }
-
+    
     handleSubmit(e){
         e.preventDefault();
         if(e.target.elements.text.value)
-        alert(e.target.elements.text.value);
+        alert(e.target.elements.text.value.trim());
 
         e.target.elements.text.value = '';
     }
@@ -71,7 +68,7 @@ class Add extends React.Component {
             <div>
             <form onSubmit={this.handleSubmit}>
                 <input name="text" type="text"></input>
-                <button onClick={this.handleAdd}>Add Option</button>
+                <button >Add Option</button>
             </form>
             </div>
             

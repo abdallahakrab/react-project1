@@ -144,15 +144,10 @@ var Add = function (_React$Component5) {
     }
 
     _createClass(Add, [{
-        key: "handleAdd",
-        value: function handleAdd() {
-            alert("Option added");
-        }
-    }, {
         key: "handleSubmit",
         value: function handleSubmit(e) {
             e.preventDefault();
-            if (e.target.elements.text.value) alert(e.target.elements.text.value);
+            if (e.target.elements.text.value) alert(e.target.elements.text.value.trim());
 
             e.target.elements.text.value = '';
         }
@@ -168,7 +163,7 @@ var Add = function (_React$Component5) {
                     React.createElement("input", { name: "text", type: "text" }),
                     React.createElement(
                         "button",
-                        { onClick: this.handleAdd },
+                        null,
                         "Add Option"
                     )
                 )
