@@ -177,10 +177,13 @@ var Add = function (_React$Component5) {
 var RemoveAll = function (_React$Component6) {
     _inherits(RemoveAll, _React$Component6);
 
-    function RemoveAll() {
+    function RemoveAll(props) {
         _classCallCheck(this, RemoveAll);
 
-        return _possibleConstructorReturn(this, (RemoveAll.__proto__ || Object.getPrototypeOf(RemoveAll)).apply(this, arguments));
+        var _this6 = _possibleConstructorReturn(this, (RemoveAll.__proto__ || Object.getPrototypeOf(RemoveAll)).call(this, props));
+
+        _this6.handleRemove = _this6.handleRemove.bind(_this6); // Method 2 
+        return _this6;
     }
 
     _createClass(RemoveAll, [{
@@ -194,9 +197,9 @@ var RemoveAll = function (_React$Component6) {
         value: function render() {
             return React.createElement(
                 "button",
-                { onClick: this.handleRemove.bind(this) },
+                { onClick: this.handleRemove },
                 "Remove All"
-            );
+            ); //Mehtod 1 to bind this to event handlers 
         }
     }]);
 

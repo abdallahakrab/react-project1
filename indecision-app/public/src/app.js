@@ -77,13 +77,18 @@ class Add extends React.Component {
 }
 
 class RemoveAll extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.handleRemove = this.handleRemove.bind(this); // Method 2 
+    }
     
     handleRemove(){
         alert("Options Removed");
         console.log(this.props.options);
     }
     render(){
-        return <button onClick={this.handleRemove.bind(this)}>Remove All</button> ;
+        return <button onClick={this.handleRemove}>Remove All</button> ; //Mehtod 1 to bind this to event handlers 
     }
 }
 
