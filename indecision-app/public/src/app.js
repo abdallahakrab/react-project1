@@ -80,9 +80,10 @@ class RemoveAll extends React.Component {
     
     handleRemove(){
         alert("Options Removed");
+        console.log(this.props.options);
     }
     render(){
-        return <button onClick={this.handleRemove}>Remove All</button> ;
+        return <button onClick={this.handleRemove.bind(this)}>Remove All</button> ;
     }
 }
 
@@ -98,7 +99,7 @@ class IndecisionApp extends React.Component {
         <div>
             <Header title="Indecision App" subtitle="let the computer decide what you learn today" />
             <Add />
-            <RemoveAll />
+            <RemoveAll options={options} />
             <Options options={options} length={options.length} />
             <Action />
         </div>

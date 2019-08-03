@@ -187,13 +187,14 @@ var RemoveAll = function (_React$Component6) {
         key: "handleRemove",
         value: function handleRemove() {
             alert("Options Removed");
+            console.log(this.props.options);
         }
     }, {
         key: "render",
         value: function render() {
             return React.createElement(
                 "button",
-                { onClick: this.handleRemove },
+                { onClick: this.handleRemove.bind(this) },
                 "Remove All"
             );
         }
@@ -219,7 +220,7 @@ var IndecisionApp = function (_React$Component7) {
                 null,
                 React.createElement(Header, { title: "Indecision App", subtitle: "let the computer decide what you learn today" }),
                 React.createElement(Add, null),
-                React.createElement(RemoveAll, null),
+                React.createElement(RemoveAll, { options: options }),
                 React.createElement(Options, { options: options, length: options.length }),
                 React.createElement(Action, null)
             );
