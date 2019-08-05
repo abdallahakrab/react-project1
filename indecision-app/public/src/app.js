@@ -1,50 +1,45 @@
-class Header extends React.Component {
-   
-    render(){ 
-        return (
-            <div>
-            <h1>{this.props.title}</h1>  
-            <p>{this.props.subtitle}</p>
-            </div>
-        )
 
-    }
+
+const Header = (props) => {
+    return (
+        <div>
+         <h1>{props.title}</h1>
+         <p>{props.subtitle}</p>
+        </div>
+    )
 }
 
-class Action extends React.Component { 
-    render() {
-        return (
-            <div>
-                <button 
-                disabled={this.props.NoOptions}
-                onClick={this.props.pick}>
-                What should I learn today?</button>
-            </div>
-        )
-    }
+const Action = (props) =>
+{
+    return(
+        <div>
+         <button
+         disabled={props.NoOptions}
+         onClick={props.pick}>
+         What should I learn today?
+         </button>
+        </div>
+    )
 }
 
-class Options extends React.Component {
-    render() {
-        return (
-            <div>
-                <p>Options will be here</p>
-                { this.props.options.map((option)=> <Option key={option} optionText = {option} />  ) }
-            </div>
-        )
-    }
+
+
+const Options = (props) =>{
+    return (
+        <div>
+         <p>Options will be here</p>
+         {props.options.map((option)=> <Option key={option} optionText = {option} /> )}
+        </div>
+    )
 }
 
-class Option extends React.Component {
-    render(){
-        return(
-            <div>
-             {this.props.optionText}
-            
-            </div>
-        )
-    }
+
+
+const Option = (props) => {
+    return <div>{props.optionText}</div>
 }
+
+
 
 class Add extends React.Component {
 
@@ -64,8 +59,6 @@ class Add extends React.Component {
             return { error }  // == to {error: error} , es6 shorthand
           }  )
         
-        
-
         e.target.elements.text.value = '';
     }
     render() {
@@ -82,18 +75,9 @@ class Add extends React.Component {
     }
 }
 
-class RemoveAll extends React.Component {
-
-   
-    
-    render(){
-        return <button onClick={this.props.propRemoveAll}>Remove All</button> ; //Mehtod 1 to bind this to event handlers 
-    }
+const RemoveAll = (props) => {
+    return <button onClick={props.propRemoveAll}>Remove All</button>
 }
-
-
-
-
 
 
 class IndecisionApp extends  React.Component {
@@ -128,7 +112,8 @@ class IndecisionApp extends  React.Component {
         }
         else if(this.state.options.indexOf(option) > -1)
             return "This item already exists";
-        this.setState((prevState)=>{
+
+        this.setState((prevState)=>{           // == to else clause ! 
             return {
                 options: prevState.options.concat(option)
             }
@@ -154,9 +139,18 @@ class IndecisionApp extends  React.Component {
         </div>
         )
     };
-}
+};
+
+ const User = (props) => {
+     return (
+         <div>
+          <h1>Name: {props.name}</h1>
+          <p>age: {props.age} </p>
+         </div>
+     )
+ }
 
 
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+ReactDOM.render( <IndecisionApp  /> , document.getElementById('app'));
 
