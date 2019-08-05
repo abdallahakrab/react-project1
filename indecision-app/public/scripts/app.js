@@ -89,11 +89,6 @@ var Options = function (_React$Component3) {
                     null,
                     "Options will be here"
                 ),
-                React.createElement(
-                    "p",
-                    null,
-                    this.props.length
-                ),
                 this.props.options.map(function (option) {
                     return React.createElement(Option, { key: option, optionText: option });
                 })
@@ -130,17 +125,21 @@ var Option = function (_React$Component4) {
 var Add = function (_React$Component5) {
     _inherits(Add, _React$Component5);
 
-    function Add() {
+    function Add(props) {
         _classCallCheck(this, Add);
 
-        return _possibleConstructorReturn(this, (Add.__proto__ || Object.getPrototypeOf(Add)).apply(this, arguments));
+        var _this5 = _possibleConstructorReturn(this, (Add.__proto__ || Object.getPrototypeOf(Add)).call(this, props));
+
+        _this5.handleSubmit = _this5.handleSubmit.bind(_this5);
+        return _this5;
     }
 
     _createClass(Add, [{
         key: "handleSubmit",
         value: function handleSubmit(e) {
             e.preventDefault();
-            if (e.target.elements.text.value) alert(e.target.elements.text.value.trim());
+            var option = e.target.elements.text.value.trim();
+            if (option) this.props.handleAddOption(option);
 
             e.target.elements.text.value = '';
         }
@@ -200,6 +199,7 @@ var IndecisionApp = function (_React$Component7) {
 
         _this7.handleRemoveAll = _this7.handleRemoveAll.bind(_this7);
         _this7.handlePick = _this7.handlePick.bind(_this7);
+        _this7.handleAddOption = _this7.handleAddOption.bind(_this7);
         _this7.state = {
             options: ["Option A", "Option B", "Option C"]
         };
@@ -222,15 +222,26 @@ var IndecisionApp = function (_React$Component7) {
             console.log(this.state.options[x]);
         }
     }, {
+        key: "handleAddOption",
+        value: function handleAddOption(option) {
+            this.setState(function (prevState) {
+                return {
+                    options: prevState.options.concat(option)
+                };
+            });
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
                 "div",
                 null,
                 React.createElement(Header, { title: "Indecision App", subtitle: "let the computer decide what you learn today" }),
-                React.createElement(Add, null),
+                React.createElement(Add, {
+                    handleAddOption: this.handleAddOption //giving access and we will call it in child 
+                }),
                 React.createElement(RemoveAll, { options: this.state.options, propRemoveAll: this.handleRemoveAll }),
-                React.createElement(Options, { options: this.state.options, length: this.state.options.length }),
+                React.createElement(Options, { options: this.state.options }),
                 React.createElement(Action, {
                     NoOptions: this.state.options.length == 0,
                     pick: this.handlePick

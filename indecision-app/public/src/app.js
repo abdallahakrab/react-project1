@@ -29,7 +29,6 @@ class Options extends React.Component {
         return (
             <div>
                 <p>Options will be here</p>
-                <p>{this.props.length}</p>
                 { this.props.options.map((option)=> <Option key={option} optionText = {option} />  ) }
             </div>
         )
@@ -48,11 +47,17 @@ class Option extends React.Component {
 }
 
 class Add extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);   
+    }
     
     handleSubmit(e){
         e.preventDefault();
-        if(e.target.elements.text.value)
-        alert(e.target.elements.text.value.trim());
+        const option = e.target.elements.text.value.trim();
+        if(option)
+        this.props.handleAddOption(option);
 
         e.target.elements.text.value = '';
     }
@@ -83,12 +88,13 @@ class RemoveAll extends React.Component {
 
 
 
-class IndecisionApp extends React.Component {
+class IndecisionApp extends  React.Component {
 
     constructor(props){
         super(props);
         this.handleRemoveAll=this.handleRemoveAll.bind(this);
         this.handlePick = this.handlePick.bind(this);
+        this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
             options: ["Option A","Option B","Option C"]
         };
@@ -105,15 +111,26 @@ class IndecisionApp extends React.Component {
     handlePick(){
         let x = Math.floor(Math.random() * this.state.options.length);
         console.log(this.state.options[x]);
+    };
+
+    handleAddOption(option){
+        this.setState((prevState)=>{
+            return {
+                options: prevState.options.concat(option)
+            }
+        })
+
     }
 
     render(){
         return (
         <div>
             <Header title="Indecision App" subtitle="let the computer decide what you learn today" />
-            <Add />
+            <Add 
+             handleAddOption={this.handleAddOption} //giving access and we will call it in child 
+            />
             <RemoveAll options={this.state.options} propRemoveAll ={this.handleRemoveAll} />
-            <Options options={this.state.options} length={this.state.options.length} />
+            <Options options={this.state.options}  />
             <Action
              NoOptions={this.state.options.length == 0}
              pick={this.handlePick}
