@@ -1,13 +1,3 @@
-//Variables
-
-const options = ["thing one", "thing throw", "thing three"];
-
-const dummy = ["d1","d2","d3"];
-
-
-//End Variables 
-
-
 class Header extends React.Component {
    
     render(){ 
@@ -25,7 +15,10 @@ class Action extends React.Component {
     render() {
         return (
             <div>
-                <button>What should I learn today?</button>
+                <button 
+                disabled={this.props.NoOptions}
+                onClick={this.props.pick}>
+                What should I learn today?</button>
             </div>
         )
     }
@@ -78,17 +71,10 @@ class Add extends React.Component {
 
 class RemoveAll extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.handleRemove = this.handleRemove.bind(this); // Method 2 
-    }
+   
     
-    handleRemove(){
-        alert("Options Removed");
-        console.log(this.props.options);
-    }
     render(){
-        return <button onClick={this.handleRemove}>Remove All</button> ; //Mehtod 1 to bind this to event handlers 
+        return <button onClick={this.props.propRemoveAll}>Remove All</button> ; //Mehtod 1 to bind this to event handlers 
     }
 }
 
@@ -99,17 +85,44 @@ class RemoveAll extends React.Component {
 
 class IndecisionApp extends React.Component {
 
+    constructor(props){
+        super(props);
+        this.handleRemoveAll=this.handleRemoveAll.bind(this);
+        this.handlePick = this.handlePick.bind(this);
+        this.state = {
+            options: ["Option A","Option B","Option C"]
+        };
+    };  
+
+    handleRemoveAll() {
+        this.setState(()=>{
+            return {
+                options: []
+            }
+        })
+    };
+
+    handlePick(){
+        let x = Math.floor(Math.random() * this.state.options.length);
+        console.log(this.state.options[x]);
+    }
+
     render(){
         return (
         <div>
             <Header title="Indecision App" subtitle="let the computer decide what you learn today" />
             <Add />
-            <RemoveAll options={options} />
-            <Options options={options} length={options.length} />
-            <Action />
+            <RemoveAll options={this.state.options} propRemoveAll ={this.handleRemoveAll} />
+            <Options options={this.state.options} length={this.state.options.length} />
+            <Action
+             NoOptions={this.state.options.length == 0}
+             pick={this.handlePick}
+            
+            
+             />
         </div>
         )
-    }
+    };
 }
 
 
