@@ -51,19 +51,27 @@ class Add extends React.Component {
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);   
+        this.state = {
+            error: undefined
+        }
     }
     
     handleSubmit(e){
         e.preventDefault();
         const option = e.target.elements.text.value.trim();
-        if(option)
-        this.props.handleAddOption(option);
+        const error = this.props.handleAddOption(option);
+        this.setState(()=>{
+            return { error }  // == to {error: error} , es6 shorthand
+          }  )
+        
+        
 
         e.target.elements.text.value = '';
     }
     render() {
         return (
             <div>
+            {this.state.error && <p>{this.state.error}</p>}
             <form onSubmit={this.handleSubmit}>
                 <input name="text" type="text"></input>
                 <button >Add Option</button>
@@ -96,7 +104,7 @@ class IndecisionApp extends  React.Component {
         this.handlePick = this.handlePick.bind(this);
         this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
-            options: ["Option A","Option B","Option C"]
+            options: []
         };
     };  
 
@@ -114,6 +122,12 @@ class IndecisionApp extends  React.Component {
     };
 
     handleAddOption(option){
+
+        if(!option){
+            return "Enter a valid input";
+        }
+        else if(this.state.options.indexOf(option) > -1)
+            return "This item already exists";
         this.setState((prevState)=>{
             return {
                 options: prevState.options.concat(option)

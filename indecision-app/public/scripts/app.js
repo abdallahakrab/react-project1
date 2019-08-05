@@ -131,6 +131,9 @@ var Add = function (_React$Component5) {
         var _this5 = _possibleConstructorReturn(this, (Add.__proto__ || Object.getPrototypeOf(Add)).call(this, props));
 
         _this5.handleSubmit = _this5.handleSubmit.bind(_this5);
+        _this5.state = {
+            error: undefined
+        };
         return _this5;
     }
 
@@ -139,7 +142,11 @@ var Add = function (_React$Component5) {
         value: function handleSubmit(e) {
             e.preventDefault();
             var option = e.target.elements.text.value.trim();
-            if (option) this.props.handleAddOption(option);
+            var error = this.props.handleAddOption(option);
+            this.setState(function () {
+                return { error: error // == to {error: error} , es6 shorthand
+                };
+            });
 
             e.target.elements.text.value = '';
         }
@@ -149,6 +156,11 @@ var Add = function (_React$Component5) {
             return React.createElement(
                 "div",
                 null,
+                this.state.error && React.createElement(
+                    "p",
+                    null,
+                    this.state.error
+                ),
                 React.createElement(
                     "form",
                     { onSubmit: this.handleSubmit },
@@ -201,7 +213,7 @@ var IndecisionApp = function (_React$Component7) {
         _this7.handlePick = _this7.handlePick.bind(_this7);
         _this7.handleAddOption = _this7.handleAddOption.bind(_this7);
         _this7.state = {
-            options: ["Option A", "Option B", "Option C"]
+            options: []
         };
         return _this7;
     }
@@ -224,6 +236,10 @@ var IndecisionApp = function (_React$Component7) {
     }, {
         key: "handleAddOption",
         value: function handleAddOption(option) {
+
+            if (!option) {
+                return "Enter a valid input";
+            } else if (this.state.options.indexOf(option) > -1) return "This item already exists";
             this.setState(function (prevState) {
                 return {
                     options: prevState.options.concat(option)
