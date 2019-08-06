@@ -1,13 +1,18 @@
 
-
 const Header = (props) => {
     return (
         <div>
          <h1>{props.title}</h1>
-         <p>{props.subtitle}</p>
+         {props.subtitle && <h2>{props.subtitle}</h2>}
         </div>
     )
-}
+
+   
+};
+
+Header.defaultProps = {
+    title: 'Indecision App'
+};
 
 const Action = (props) =>
 {
@@ -88,7 +93,7 @@ class IndecisionApp extends  React.Component {
         this.handlePick = this.handlePick.bind(this);
         this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
-            options: []
+            options: this.props.defaultOptions
         };
     };  
 
@@ -101,8 +106,8 @@ class IndecisionApp extends  React.Component {
     };
 
     handlePick(){
-        let x = Math.floor(Math.random() * this.state.options.length);
-        console.log(this.state.options[x]);
+        let randomIndex = Math.floor(Math.random() * this.state.options.length);
+        alert(this.state.options[randomIndex]);
     };
 
     handleAddOption(option){
@@ -124,7 +129,7 @@ class IndecisionApp extends  React.Component {
     render(){
         return (
         <div>
-            <Header title="Indecision App" subtitle="let the computer decide what you learn today" />
+            <Header  subtitle="let the computer decide what you learn today" />
             <Add 
              handleAddOption={this.handleAddOption} //giving access and we will call it in child 
             />
@@ -140,17 +145,11 @@ class IndecisionApp extends  React.Component {
         )
     };
 };
+IndecisionApp.defaultProps = {
+    defaultOptions: []
+}
 
- const User = (props) => {
-     return (
-         <div>
-          <h1>Name: {props.name}</h1>
-          <p>age: {props.age} </p>
-         </div>
-     )
- }
+ 
 
-
-
-ReactDOM.render( <IndecisionApp  /> , document.getElementById('app'));
+ReactDOM.render( <IndecisionApp defaultOptions={["React","Angular","Vue"]}  /> , document.getElementById('app'));
 
