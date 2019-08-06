@@ -60,9 +60,9 @@ class Add extends React.Component {
         e.preventDefault();
         const option = e.target.elements.text.value.trim();
         const error = this.props.handleAddOption(option);
-        this.setState(()=>{
-            return { error }  // == to {error: error} , es6 shorthand
-          }  )
+        this.setState(()=>({error})); // == to {error: error} , es6 shorthand
+             
+         
         
         e.target.elements.text.value = '';
     }
@@ -98,11 +98,7 @@ class IndecisionApp extends  React.Component {
     };  
 
     handleRemoveAll() {
-        this.setState(()=>{
-            return {
-                options: []
-            }
-        })
+        this.setState(() => ({options: []}));
     };
 
     handlePick(){
@@ -118,11 +114,8 @@ class IndecisionApp extends  React.Component {
         else if(this.state.options.indexOf(option) > -1)
             return "This item already exists";
 
-        this.setState((prevState)=>{           // == to else clause ! 
-            return {
-                options: prevState.options.concat(option)
-            }
-        })
+        this.setState((prevState)=> ({options: prevState.options.concat(option)}));         // == to else clause ! 
+            
 
     }
 

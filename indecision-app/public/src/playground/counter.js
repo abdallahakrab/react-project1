@@ -63,7 +63,7 @@ Counter.defaultProps = {
 
 }
 
-ReactDOM.render(<Counter startCount = {5} />,document.getElementById('app'));
+ReactDOM.render(<Counter />,document.getElementById('app'));
 // let count = 0;
 
 // const addOne = () => {count++;
