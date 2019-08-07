@@ -47,10 +47,10 @@ var Options = function Options(props) {
     return React.createElement(
         'div',
         null,
-        React.createElement(
+        props.options.length === 0 && React.createElement(
             'p',
             null,
-            'Options will be here'
+            'Add options to get started!'
         ),
         props.options.map(function (option) {
             return React.createElement(Option, {
@@ -222,12 +222,27 @@ var IndecisionApp = function (_React$Component2) {
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
-            console.log("Hello component");
+
+            try {
+                var optionsStr = localStorage.getItem("options");
+                var optionsArr = JSON.parse(optionsStr);
+
+                if (optionsArr) {
+                    this.setState(function () {
+                        return { options: optionsArr };
+                    });
+                }
+            } catch (e) {
+                // DO
+            }
         }
     }, {
         key: 'componentDidUpdate',
-        value: function componentDidUpdate() {
-            console.log("component updated");
+        value: function componentDidUpdate(prevProps, prevState) {
+            if (prevState.options.length !== this.state.options.length) {
+                var json = JSON.stringify(this.state.options);
+                localStorage.setItem("options", json);
+            }
         }
     }, {
         key: 'componentWillUnmount',

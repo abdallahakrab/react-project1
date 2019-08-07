@@ -32,7 +32,8 @@ const Action = (props) =>
 const Options = (props) =>{
     return (
         <div>
-         <p>Options will be here</p>
+
+         {props.options.length === 0 && <p>Add options to get started!</p>}
          {props.options.map(option =>
             <Option 
              key={option}
@@ -163,11 +164,26 @@ class IndecisionApp extends  React.Component {
     };
 
     componentDidMount(){
-        console.log("Hello component");
+
+        try {
+            const optionsStr = localStorage.getItem("options");
+        const optionsArr = JSON.parse(optionsStr);
+
+        if(optionsArr){
+        this.setState( ()=> ({options:optionsArr}));
+        }
+        } catch (e) {
+            // DO
+        }
+        
     };
 
-    componentDidUpdate(){
-        console.log("component updated");
+    componentDidUpdate(prevProps,prevState){
+        if(prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem("options",json);
+
+        }
     };
 
     componentWillUnmount(){
