@@ -33,15 +33,28 @@ const Options = (props) =>{
     return (
         <div>
          <p>Options will be here</p>
-         {props.options.map((option)=> <Option key={option} optionText = {option} /> )}
+         {props.options.map(option => <Option 
+            key={option}
+            optionText = {option} 
+            handleDeleteOption={props.handleDeleteOption}
+            /> )}
         </div>
     )
 }
 
 
-
 const Option = (props) => {
-    return <div>{props.optionText}</div>
+    return (
+        <div>
+        {props.optionText}
+        <button
+         onClick={(e) =>{
+             props.handleDeleteOption(props.optionText);
+         }}
+         >
+        Remove
+        </button>
+        </div>)
 }
 
 
@@ -92,6 +105,7 @@ class IndecisionApp extends  React.Component {
         this.handleRemoveAll=this.handleRemoveAll.bind(this);
         this.handlePick = this.handlePick.bind(this);
         this.handleAddOption = this.handleAddOption.bind(this);
+        this.handleDeleteOption = this.handleDeleteOption.bind(this);
         this.state = {
             options: this.props.defaultOptions
         };
@@ -119,6 +133,12 @@ class IndecisionApp extends  React.Component {
 
     }
 
+    handleDeleteOption(option) {
+
+        this.setState( prevState => ({options: prevState.options.filter(element => element != option)})) ;
+        
+    }
+
     render(){
         return (
         <div>
@@ -127,7 +147,10 @@ class IndecisionApp extends  React.Component {
              handleAddOption={this.handleAddOption} //giving access and we will call it in child 
             />
             <RemoveAll options={this.state.options} propRemoveAll ={this.handleRemoveAll} />
-            <Options options={this.state.options}  />
+            <Options 
+             options={this.state.options}
+             handleDeleteOption={this.handleDeleteOption}
+             />
             <Action
              NoOptions={this.state.options.length == 0}
              pick={this.handlePick}
