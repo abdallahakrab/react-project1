@@ -219,6 +219,21 @@ var IndecisionApp = function (_React$Component2) {
                 })
             );
         }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log("Hello component");
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate() {
+            console.log("component updated");
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            console.log("goodbye component");
+        }
     }]);
 
     return IndecisionApp;

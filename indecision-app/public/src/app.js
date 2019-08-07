@@ -33,11 +33,12 @@ const Options = (props) =>{
     return (
         <div>
          <p>Options will be here</p>
-         {props.options.map(option => <Option 
-            key={option}
-            optionText = {option} 
-            handleDeleteOption={props.handleDeleteOption}
-            /> )}
+         {props.options.map(option =>
+            <Option 
+             key={option}
+             optionText = {option} 
+             handleDeleteOption={props.handleDeleteOption}
+             /> )}
         </div>
     )
 }
@@ -159,6 +160,18 @@ class IndecisionApp extends  React.Component {
              />
         </div>
         )
+    };
+
+    componentDidMount(){
+        console.log("Hello component");
+    };
+
+    componentDidUpdate(){
+        console.log("component updated");
+    };
+
+    componentWillUnmount(){
+        console.log("goodbye component");
     };
 };
 IndecisionApp.defaultProps = {
