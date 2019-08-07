@@ -109,7 +109,8 @@ class IndecisionApp extends  React.Component {
         this.handleAddOption = this.handleAddOption.bind(this);
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
         this.state = {
-            options: this.props.defaultOptions
+            options: []
+            //this.props.defaultOptions
         };
     };  
 
@@ -190,9 +191,9 @@ class IndecisionApp extends  React.Component {
         console.log("goodbye component");
     };
 };
-IndecisionApp.defaultProps = {
-    defaultOptions: []
-}
+// IndecisionApp.defaultProps = {
+//     defaultOptions: []
+// }
 
  
 

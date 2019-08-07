@@ -156,7 +156,8 @@ var IndecisionApp = function (_React$Component2) {
         _this2.handleAddOption = _this2.handleAddOption.bind(_this2);
         _this2.handleDeleteOption = _this2.handleDeleteOption.bind(_this2);
         _this2.state = {
-            options: _this2.props.defaultOptions
+            options: []
+            //this.props.defaultOptions
         };
         return _this2;
     }
@@ -255,8 +256,9 @@ var IndecisionApp = function (_React$Component2) {
 }(React.Component);
 
 ;
-IndecisionApp.defaultProps = {
-    defaultOptions: []
-};
+// IndecisionApp.defaultProps = {
+//     defaultOptions: []
+// }
+
 
 ReactDOM.render(React.createElement(IndecisionApp, { defaultOptions: ["React", "Angular", "Vue"] }), document.getElementById('app'));
