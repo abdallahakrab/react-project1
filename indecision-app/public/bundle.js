@@ -65,9 +65,58 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__person_js__ = __webpack_require__(2);
+  // ./ brings us to the current file directory 
+
+
 
 console.log("from app.js");
+
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* square */](3));
+
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](100,23));
+
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](22));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrive */](15));
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return square; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
+//will contain utility functions 
+
+// will not be seen if:
+//not picked up because its not the entry point of our webpack app
+//not imported from that entry point or any file this entry point imports 
+
+
+console.log("utils.js is running");
+
+const square = x => x * x ;
+const add = (a,b) => a + b;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+const isAdult = x => x>18 ? true:false;
+/* harmony export (immutable) */ __webpack_exports__["b"] = isAdult;
+
+const canDrive = x => x>21 ? true:false;
+/* harmony export (immutable) */ __webpack_exports__["a"] = canDrive;
+
+
 
 /***/ })
 /******/ ]);
