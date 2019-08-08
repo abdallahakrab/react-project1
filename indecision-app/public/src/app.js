@@ -151,7 +151,8 @@ class IndecisionApp extends  React.Component {
             />
             <RemoveAll options={this.state.options} propRemoveAll ={this.handleRemoveAll} />
             <Options 
-             options={this.state.options}
+             options={this
+                .state.options}
              handleDeleteOption={this.handleDeleteOption}
              />
             <Action

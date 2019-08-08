@@ -59,7 +59,6 @@ class Counter extends React.Component {
     };
 
     componentDidMount(){
-        console.log("CDM");
         const countStr = localStorage.getItem("count");
         const countInt = parseInt(countStr,10);
         if(!isNaN(countInt)){
