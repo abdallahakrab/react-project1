@@ -12,4 +12,3 @@ module.exports = {
   }
 };
 
-console.log("print",path.join(__dirname, 'public'));
