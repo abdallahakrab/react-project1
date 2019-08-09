@@ -76,21 +76,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 console.log("from app.js");
-
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* square */](3));
-
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["c" /* square */](3));
 console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](100,23));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */](100,81));
 
-console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](22));
+
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["c" /* isAdult */](22));
 console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrive */](15));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* default */](63));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* default */](67));
+
 
 /***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return square; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return square; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return subtract; });
 //will contain utility functions 
 
 // will not be seen if:
@@ -102,7 +106,9 @@ console.log("utils.js is running");
 
 const square = x => x * x ;
 const add = (a,b) => a + b;
+const subtract = (a,b) => a-b;
 
+ // 1st way for default 
 
 /***/ }),
 /* 2 */
@@ -111,10 +117,13 @@ const add = (a,b) => a + b;
 "use strict";
 
 const isAdult = x => x>18 ? true:false;
-/* harmony export (immutable) */ __webpack_exports__["b"] = isAdult;
+/* harmony export (immutable) */ __webpack_exports__["c"] = isAdult;
 
 const canDrive = x => x>21 ? true:false;
 /* harmony export (immutable) */ __webpack_exports__["a"] = canDrive;
+
+
+/* harmony default export */ __webpack_exports__["b"] = (a => a>=65);
 
 
 
