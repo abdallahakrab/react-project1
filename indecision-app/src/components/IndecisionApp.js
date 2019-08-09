@@ -4,30 +4,35 @@ import Action from './Action';
 import Options from './Options';
 import Add from './Add';
 import RemoveAll from './RemoveAll';
+
+
 export default class IndecisionApp extends  React.Component {
 
     constructor(props){
         super(props);
-        this.handleRemoveAll=this.handleRemoveAll.bind(this);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.state = {
-            options: []
+        // this.handleRemoveAll=this.handleRemoveAll.bind(this);
+        // this.handlePick = this.handlePick.bind(this);
+        // this.handleAddOption = this.handleAddOption.bind(this);
+        // this.handleDeleteOption = this.handleDeleteOption.bind(this);
+        
             //this.props.defaultOptions
-        };
+        
     };  
 
-    handleRemoveAll() {
+    state = {
+        options: []
+    };
+
+    handleRemoveAll = () => {
         this.setState(() => ({options: []}));
     };
 
-    handlePick(){
+    handlePick = () => {
         let randomIndex = Math.floor(Math.random() * this.state.options.length);
         alert(this.state.options[randomIndex]);
     };
 
-    handleAddOption(option){
+    handleAddOption = (option) => {
 
         if(!option){
             return "Enter a valid input";
@@ -40,7 +45,7 @@ export default class IndecisionApp extends  React.Component {
 
     }
 
-    handleDeleteOption(option) {
+    handleDeleteOption = (option) => {
 
         this.setState( prevState => ({options: prevState.options.filter(element => element != option)})) ;
         
@@ -101,3 +106,6 @@ export default class IndecisionApp extends  React.Component {
 // IndecisionApp.defaultProps = {
 //     defaultOptions: []
 // }
+
+
+

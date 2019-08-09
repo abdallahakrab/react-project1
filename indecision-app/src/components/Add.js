@@ -1,16 +1,15 @@
 import React from 'react';
 
 export default class Add extends React.Component {
-
+    state = {
+        error: undefined
+    };
     constructor(props){
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);   
-        this.state = {
-            error: undefined
-        }
-    }
+        
+    };
     
-    handleSubmit(e){
+    handleSubmit = (e) => {
         e.preventDefault();
         const option = e.target.elements.text.value.trim();
         const error = this.props.handleAddOption(option);
@@ -19,7 +18,7 @@ export default class Add extends React.Component {
          
         
         e.target.elements.text.value = '';
-    }
+    };
     render() {
         return (
             <div>
