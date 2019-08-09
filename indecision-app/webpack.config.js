@@ -16,6 +16,7 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/
   }]
-}
+},
+devtool: 'cheap-module--eval-source-map'
 };
 
