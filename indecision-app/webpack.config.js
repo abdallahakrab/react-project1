@@ -9,6 +9,13 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js' // can be any name but this is the most common
-  }
+  },
+  module: {
+    rules: [{
+      loader: 'babel-loader',
+      test: /\.js$/,
+      exclude: /node_modules/
+  }]
+}
 };
 
