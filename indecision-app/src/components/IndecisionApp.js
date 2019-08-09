@@ -8,17 +8,7 @@ import RemoveAll from './RemoveAll';
 
 export default class IndecisionApp extends  React.Component {
 
-    constructor(props){
-        super(props);
-        // this.handleRemoveAll=this.handleRemoveAll.bind(this);
-        // this.handlePick = this.handlePick.bind(this);
-        // this.handleAddOption = this.handleAddOption.bind(this);
-        // this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        
-            //this.props.defaultOptions
-        
-    };  
-
+    
     state = {
         options: []
     };

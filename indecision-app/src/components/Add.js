@@ -4,10 +4,7 @@ export default class Add extends React.Component {
     state = {
         error: undefined
     };
-    constructor(props){
-        super(props);
-        
-    };
+    
     
     handleSubmit = (e) => {
         e.preventDefault();
