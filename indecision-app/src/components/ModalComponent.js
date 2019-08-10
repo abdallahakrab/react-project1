@@ -6,7 +6,7 @@ const ModalComponent = (props) => (
      <Modal
       isOpen={!!props.optionSelected}
       contentLabel={"Option decided"}
-     // onRequestClose={}
+      onRequestClose={props.closeModal}
      
      >
         <h2>Computer decided:</h2>
