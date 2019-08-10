@@ -51,13 +51,16 @@ export default class IndecisionApp extends  React.Component {
 
     render(){
         return (
+       
         <div>
-            <Header  subtitle="let the computer decide what you learn today" />
-            <Add 
+        <Header  subtitle="let the computer decide what you learn today" />
+            <div className="container">
+            
+             <Add 
              handleAddOption={this.handleAddOption} //giving access and we will call it in child 
-            />
-            <RemoveAll options={this.state.options} propRemoveAll ={this.handleRemoveAll} />
-            <Options 
+             />
+              <RemoveAll options={this.state.options} propRemoveAll ={this.handleRemoveAll} />
+             <Options 
              options={this
                 .state.options}
              handleDeleteOption={this.handleDeleteOption}
@@ -66,6 +69,7 @@ export default class IndecisionApp extends  React.Component {
              NoOptions={this.state.options.length == 0}
              pick={this.handlePick}
              />
+            </div>
              <ModalComponent
               optionSelected={this.state.optionSelected}
               closeModal={this.handleClearSelectedOption}
