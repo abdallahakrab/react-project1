@@ -2,6 +2,7 @@
     background:$light-blue;
     margin-bottom: $xl-size;
 }
+
 // Widget Header
 .widget-header {
     background: $blue;
@@ -17,4 +18,14 @@
     margin: 0;
 
 
+}
+
+//Widget message
+
+.widget__message {
+    color: $off-white;
+    margin: 0;
+    padding: $l-size;
+    text-align: center;
+    border-bottom: .1rem solid lighten($light-blue,10%);
 }

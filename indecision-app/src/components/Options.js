@@ -13,7 +13,7 @@ const Options = (props) => (
             propRemoveAll ={props.handleRemoveAll} 
            />
           </div>
-          {props.options.length === 0 && <p>Add options to get started!</p>}
+          {props.options.length === 0 && <p className="widget__message">Add options to get started!</p>}
           {props.options.map(option =>
           <Option 
            key={option}
