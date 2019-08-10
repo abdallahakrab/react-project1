@@ -3,7 +3,7 @@ import Header from './Header';
 import Action from './Action';
 import Options from './Options';
 import Add from './Add';
-import RemoveAll from './RemoveAll';
+
 import ModalComponent from './ModalComponent';
 import { throws } from 'assert';
 
@@ -55,20 +55,24 @@ export default class IndecisionApp extends  React.Component {
         <div>
         <Header  subtitle="let the computer decide what you learn today" />
             <div className="container">
-            
-             <Add 
-             handleAddOption={this.handleAddOption} //giving access and we will call it in child 
-             />
-              <RemoveAll options={this.state.options} propRemoveAll ={this.handleRemoveAll} />
-             <Options 
-             options={this
-                .state.options}
-             handleDeleteOption={this.handleDeleteOption}
-             />
+
             <Action
              NoOptions={this.state.options.length == 0}
              pick={this.handlePick}
              />
+            
+             <div className="widget">
+              <Options 
+               options={this.state.options}
+               handleDeleteOption={this.handleDeleteOption}
+               handleRemoveAll={this.handleRemoveAll}
+               />
+              <Add 
+               handleAddOption={this.handleAddOption} //giving access and we will call it in child 
+              />
+             </div>
+             
+            
             </div>
              <ModalComponent
               optionSelected={this.state.optionSelected}
