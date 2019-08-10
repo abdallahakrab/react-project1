@@ -3,8 +3,7 @@ import Option from './Option';
 
 
 
-const Options = (props) =>{
-    return (
+const Options = (props) => (
         <div>
 
          {props.options.length === 0 && <p>Add options to get started!</p>}
@@ -15,7 +14,7 @@ const Options = (props) =>{
              handleDeleteOption={props.handleDeleteOption}
              /> )}
         </div>
-    )
-};
+    
+);
 
 export default Options;

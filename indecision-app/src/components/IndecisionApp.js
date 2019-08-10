@@ -37,17 +37,17 @@ export default class IndecisionApp extends  React.Component {
         this.setState((prevState)=> ({options: prevState.options.concat(option)}));         // == to else clause ! 
             
 
-    }
+    };
 
     handleDeleteOption = (option) => {
 
         this.setState( prevState => ({options: prevState.options.filter(element => element != option)})) ;
         
-    }
+    };
 
     handleClearSelectedOption = () => {
         this.setState(() => ({optionSelected: undefined}));
-    }
+    };
 
     render(){
         return (
