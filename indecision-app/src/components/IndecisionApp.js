@@ -4,13 +4,16 @@ import Action from './Action';
 import Options from './Options';
 import Add from './Add';
 import RemoveAll from './RemoveAll';
+import ModalComponent from './ModalComponent';
+import { throws } from 'assert';
 
 
 export default class IndecisionApp extends  React.Component {
 
     
     state = {
-        options: []
+        options: [],
+        optionSelected: undefined
     };
 
     handleRemoveAll = () => {
@@ -19,7 +22,8 @@ export default class IndecisionApp extends  React.Component {
 
     handlePick = () => {
         let randomIndex = Math.floor(Math.random() * this.state.options.length);
-        alert(this.state.options[randomIndex]);
+        this.setState(()=>({optionSelected: (this.state.options[randomIndex])}));
+        return (this.state.options[randomIndex]);
     };
 
     handleAddOption = (option) => {
@@ -41,6 +45,10 @@ export default class IndecisionApp extends  React.Component {
         
     }
 
+    handleClearSelectedOption = () => {
+        this.setState(() => ({optionSelected: undefined}));
+    }
+
     render(){
         return (
         <div>
@@ -57,9 +65,12 @@ export default class IndecisionApp extends  React.Component {
             <Action
              NoOptions={this.state.options.length == 0}
              pick={this.handlePick}
-            
-            
              />
+             <ModalComponent
+              optionSelected={this.state.optionSelected}
+              closeModal={this.handleClearSelectedOption}
+             />
+
         </div>
         )
     };
