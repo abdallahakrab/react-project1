@@ -7,10 +7,12 @@ const ModalComponent = (props) => (
       isOpen={!!props.optionSelected}
       contentLabel={"Option decided"}
       onRequestClose={props.closeModal}
+      closeTimeoutMS={200}
+      className="modal"
      
      >
-        <h2>Computer decided:</h2>
-        <h1>{props.optionSelected}</h1>
+        <h3 className="modal__title">Computer decided:</h2>
+        <p className="modal__body">{props.optionSelected}</p>
         <button onClick={props.closeModal}>Okay</button>
      </Modal>
     
